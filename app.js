@@ -1,3 +1,6 @@
+// Add this line at the VERY TOP of the file
+const API_BASE_URL = "https://afrixaai-backend.onrender.com";
+
 // DOM Elements
 const chatMessages = document.getElementById('chat-messages');
 const messageInput = document.getElementById('message-input');
