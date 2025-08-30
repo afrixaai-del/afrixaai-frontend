@@ -3,62 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AfrixaAI - Intelligent Chatbot</title>
+    <title>AfrixaAI - AI-Powered Customer Support for African Businesses</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="dark-mode">
-    <div class="chat-container">
-        <header class="chat-header">
-            <div class="header-content">
-                <h1><i class="fas fa-robot"></i> AfrixaAI</h1>
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-toggle">
-                        <input type="checkbox" id="theme-toggle">
-                        <div class="slider round">
-                            <span class="icon moon"><i class="fas fa-moon"></i></span>
-                            <span class="icon sun"><i class="fas fa-sun"></i></span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-        </header>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
-        <main class="chat-main">
-            <div id="chat-messages" class="chat-messages">
-                <div class="message ai-message">
-                    <div class="message-content">
-                        <p>Hello! I am AfrixaAI, crafted by Ibrahim, The AI Master. How can I assist you today?</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">AfrixaAI</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>AI-Powered Customer Support for African Businesses</h1>
+            <p>Revolutionize your customer service with our cutting-edge AI solutions designed specifically for the African market</p>
+            <a href="#pricing" class="cta-button pulse">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="glass-card feature-card floating">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <div class="message-timestamp">Just now</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support without additional staffing costs</p>
+                </div>
+                <div class="glass-card feature-card floating" style="animation-delay: 0.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multilingual</h3>
+                    <p>Support for major African languages and dialects</p>
+                </div>
+                <div class="glass-card feature-card floating" style="animation-delay: 1s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Easy Setup</h3>
+                    <p>Get up and running in less than 24 hours with minimal technical requirements</p>
+                </div>
+                <div class="glass-card feature-card floating" style="animation-delay: 1.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Smart Analytics</h3>
+                    <p>Gain valuable insights from customer interactions and feedback</p>
                 </div>
             </div>
-            <div id="typing-indicator" class="typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </main>
+        </div>
+    </section>
 
-        <footer class="chat-footer">
-            <div class="input-container">
-                <input 
-                    type="text" 
-                    id="message-input" 
-                    placeholder="Type your message here..." 
-                    autocomplete="off"
-                >
-                <button id="send-button">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Affordable Pricing</h2>
+            <div class="pricing-cards">
+                <div class="glass-card pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">₦25,000<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 500 conversations/month</li>
+                        <li>2 African languages</li>
+                        <li>Email support</li>
+                        <li>Basic analytics</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+                <div class="glass-card pricing-card popular">
+                    <h3>Growth</h3>
+                    <div class="price">₦75,000<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 2,000 conversations/month</li>
+                        <li>5 African languages</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                        <li>CRM integration</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+                <div class="glass-card pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Unlimited conversations</li>
+                        <li>All African languages</li>
+                        <li>24/7 dedicated support</li>
+                        <li>Custom integrations</li>
+                        <li>Personalized AI training</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Contact Sales</a>
+                </div>
             </div>
-            <div class="creator-credit">
-                Crafted by Ibrahim, The AI Master
-            </div>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <script src="config.js"></script>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="glass-card about-content">
+                <p>AfrixaAI was born out of a vision to empower African businesses with cutting-edge AI technology that understands the unique needs and challenges of the continent.</p>
+                <p>Our founder, Ibrahim, a Nigerian developer with years of experience in AI and machine learning, recognized the gap in tailored customer support solutions for African markets and set out to build a platform that would revolutionize how businesses interact with their customers.</p>
+                <p>Today, we're proud to serve businesses across Africa, helping them provide exceptional customer service while reducing costs and improving efficiency.</p>
+                <p class="founder">"Built by Ibrahim, a Nigerian developer, for African businesses."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="glass-card contact-form">
+                <form id="contactForm" action="https://formsubmit.co/afrixaai@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New contact form submission from AfrixaAI website">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">AfrixaAI</div>
+                    <p>Revolutionizing customer support for African businesses with cutting-edge AI technology.</p>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i>afrixaai@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +234 801 634 4276</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Gombe, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 AfrixaAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="chat-widget"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="app.js"></script>
+    <script src="widget.js"></script>
 </body>
 </html>
