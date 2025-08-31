@@ -198,15 +198,20 @@ document.addEventListener('DOMContentLoaded', function() {
     updatePrices('NGN');
 });
 
-// Currency conversion function
+// Currency conversion function - Updated for Flutterwave currencies
 function updatePrices(currency) {
     const currencySymbols = {
         'NGN': '₦',
         'USD': '$',
         'EUR': '€',
+        'GBP': '£',
         'GHS': '₵',
         'KES': 'KSh',
-        'ZAR': 'R'
+        'RWF': 'FRw',
+        'TZS': 'TSh',
+        'UGX': 'USh',
+        'ZAR': 'R',
+        'ZMW': 'ZK'
     };
     
     const prices = document.querySelectorAll('.price');
