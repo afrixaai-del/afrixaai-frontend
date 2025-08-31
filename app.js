@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form handling with better user experience
+    // Form handling with direct email
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('form-status');
     
@@ -143,37 +143,27 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Use FormSubmit with AJAX to avoid redirect
-            const formData = new FormData();
-            formData.append('name', name.value);
-            formData.append('email', email.value);
-            formData.append('message', message.value);
-            formData.append('_subject', 'New contact from AfrixaAI Website');
-            formData.append('_template', 'table');
-            formData.append('_captcha', 'false');
+            // Use direct mailto approach
+            const subject = `New message from ${name.value} - AfrixaAI Contact Form`;
+            const body = `Name: ${name.value}%0D%0AEmail: ${email.value}%0D%0A%0D%0AMessage:%0D%0A${message.value}`;
             
-            fetch('https://formsubmit.co/el/cisumu.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showFormStatus('Thank you for your message! We will get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error('Submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Form submission error:', error);
-                showFormStatus('Sorry, there was an error sending your message. Please try again later or email us directly at afrixaai@gmail.com.', 'error');
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.textContent = originalBtnText;
-                submitBtn.disabled = false;
-            });
+            // Create a temporary link to trigger the email client
+            const mailtoLink = document.createElement('a');
+            mailtoLink.href = `mailto:afrixaai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            mailtoLink.style.display = 'none';
+            document.body.appendChild(mailtoLink);
+            
+            // Trigger the click and clean up
+            mailtoLink.click();
+            document.body.removeChild(mailtoLink);
+            
+            // Show success message
+            showFormStatus('Thank you for your message! Your email client should open shortly. Please click send to complete the process.', 'success');
+            contactForm.reset();
+            
+            // Reset button state
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
         });
     }
     
