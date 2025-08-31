@@ -152,13 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             
-            fetch('https://formsubmit.co/afrixaai@gmail.com', {
+            fetch('https://formsubmit.co/ajax/afrixaai@gmail.com', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            .then(response => {
+                if (response.ok) {
                     showFormStatus('Thank you for your message! We will get back to you soon.', 'success');
                     contactForm.reset();
                 } else {
