@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             
-            fetch('https://formsubmit.co/el/cisumu', {
+            fetch('https://formsubmit.co/el/cisumu.com', {
                 method: 'POST',
                 body: formData
             })
