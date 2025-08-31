@@ -120,7 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const chunk = decoder.decode(value);
                 aiResponse += chunk;
-                messageText.textContent = aiResponse;
+                
+                // Clean up the response - remove brackets and .n/ artifacts
+                let cleanedResponse = aiResponse
+                    .replace(/\[.*?\]/g, '') // Remove anything in brackets
+                    .replace(/\.n\//g, '')   // Remove .n/ artifacts
+                    .replace(/\\n/g, '\n')   // Convert literal \n to actual newlines
+                    .trim();
+                
+                messageText.textContent = cleanedResponse;
                 
                 // Auto-scroll to bottom
                 chatMessages.scrollTop = chatMessages.scrollHeight;

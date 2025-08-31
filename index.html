@@ -76,14 +76,79 @@
         </div>
     </section>
 
+    <!-- Live Chat Demo Section -->
+    <section id="chat-demo">
+        <div class="container">
+            <h2 class="section-title">See Our AI in Action</h2>
+            <div class="glass-card chat-demo-container">
+                <div class="chat-demo">
+                    <div class="chat-message bot">
+                        <div class="avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm the AfrixaAI assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                    <div class="chat-message user">
+                        <div class="avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>What languages do you support?</p>
+                        </div>
+                    </div>
+                    <div class="chat-message bot">
+                        <div class="avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>We support all major African languages including Swahili, Hausa, Yoruba, Zulu, Amharic, and Arabic, plus English, French, and Portuguese.</p>
+                        </div>
+                    </div>
+                    <div class="chat-message user">
+                        <div class="avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>How quickly can I set it up?</p>
+                        </div>
+                    </div>
+                    <div class="chat-message bot">
+                        <div class="avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Most businesses are up and running in less than 24 hours! We handle the technical setup so you can focus on your customers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section id="pricing">
         <div class="container">
             <h2 class="section-title">Affordable Pricing</h2>
+            
+            <!-- Currency Selector -->
+            <div class="currency-selector">
+                <label for="currency">Select Currency:</label>
+                <select id="currency" class="currency-dropdown">
+                    <option value="NGN">Naira (₦)</option>
+                    <option value="USD">US Dollar ($)</option>
+                    <option value="EUR">Euro (€)</option>
+                    <option value="GHS">Ghana Cedi (₵)</option>
+                    <option value="KES">Kenyan Shilling (KSh)</option>
+                    <option value="ZAR">South African Rand (R)</option>
+                </select>
+            </div>
+            
             <div class="pricing-cards">
                 <div class="glass-card pricing-card">
                     <h3>Starter</h3>
-                    <div class="price">₦25,000<span>/month</span></div>
+                    <div class="price" data-ngn="25000" data-usd="30" data-eur="28" data-ghs="360" data-kes="3900" data-zar="560">₦25,000<span>/month</span></div>
                     <ul class="pricing-features">
                         <li>Up to 500 conversations/month</li>
                         <li>2 African languages</li>
@@ -94,7 +159,7 @@
                 </div>
                 <div class="glass-card pricing-card popular">
                     <h3>Growth</h3>
-                    <div class="price">₦75,000<span>/month</span></div>
+                    <div class="price" data-ngn="75000" data-usd="90" data-eur="84" data-ghs="1080" data-kes="11700" data-zar="1680">₦75,000<span>/month</span></div>
                     <ul class="pricing-features">
                         <li>Up to 2,000 conversations/month</li>
                         <li>5 African languages</li>
@@ -106,7 +171,7 @@
                 </div>
                 <div class="glass-card pricing-card">
                     <h3>Enterprise</h3>
-                    <div class="price">Custom<span>/month</span></div>
+                    <div class="price" data-ngn="custom" data-usd="custom" data-eur="custom" data-ghs="custom" data-kes="custom" data-zar="custom">Custom<span>/month</span></div>
                     <ul class="pricing-features">
                         <li>Unlimited conversations</li>
                         <li>All African languages</li>
@@ -115,6 +180,68 @@
                         <li>Personalized AI training</li>
                     </ul>
                     <a href="#contact" class="cta-button">Contact Sales</a>
+                </div>
+            </div>
+            
+            <div class="payment-info">
+                <p><i class="fas fa-check-circle"></i> We accept payments in all major African currencies supported by Paystack</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does AfrixaAI handle African languages and dialects?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI is specially trained on African languages, accents, and cultural contexts. We support all major African languages including Swahili, Hausa, Yoruba, Zulu, Amharic, and Arabic, with continuous learning to understand local dialects and expressions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I integrate with my existing systems?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! AfrixaAI integrates seamlessly with popular CRM systems, WhatsApp Business, Facebook Messenger, and custom solutions through our API. Our technical team will ensure smooth integration with your existing tools.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes AfrixaAI different from other chatbots?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unlike generic solutions, AfrixaAI is built specifically for African businesses. We understand local contexts, languages, and customer behavior patterns. Our AI provides culturally relevant responses and handles African payment systems seamlessly.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly can I get started?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most customers are up and running within 24 hours! Our streamlined onboarding process requires minimal technical expertise. We handle the setup while you focus on your business.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What kind of support do you provide?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer 24/7 customer support with local African numbers, dedicated account managers for enterprise clients, and comprehensive documentation. Our support team understands African business environments and can help in multiple languages.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,9 +265,7 @@
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="glass-card contact-form">
-                <form id="contactForm" action="https://formsubmit.co/afrixaai@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New contact form submission from AfrixaAI website">
-                    <input type="hidden" name="_template" value="table">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
@@ -155,6 +280,7 @@
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
+                <div id="form-status"></div>
             </div>
         </div>
     </section>
@@ -196,9 +322,9 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-envelope"></i>afrixaai@gmail.com</li>
-                        <li><i class="fas fa-phone"></i> +234 808 163 4276</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Gombe, Nigeria</li>
+                        <li><i class="fas fa-envelope"></i> support@afrixaai.com</li>
+                        <li><i class="fas fa-phone"></i> +234 801 234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
                     </ul>
                 </div>
             </div>

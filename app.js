@@ -62,40 +62,164 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form validation
+    // Currency conversion functionality
+    const currencySelector = document.getElementById('currency');
+    if (currencySelector) {
+        currencySelector.addEventListener('change', function() {
+            updatePrices(this.value);
+        });
+    }
+    
+    // FAQ accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all answers
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('active');
+            });
+            
+            // Toggle icon
+            document.querySelectorAll('.faq-question i').forEach(icon => {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            });
+            
+            // Open clicked answer if it wasn't active
+            if (!isActive) {
+                answer.classList.add('active');
+                this.querySelector('i').classList.remove('fa-chevron-down');
+                this.querySelector('i').classList.add('fa-chevron-up');
+            }
+        });
+    });
+    
+    // Form handling with better user experience
     const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             let valid = true;
             const name = document.getElementById('name');
             const email = document.getElementById('email');
             const message = document.getElementById('message');
             
+            // Reset previous error styles
+            name.style.borderColor = '';
+            email.style.borderColor = '';
+            message.style.borderColor = '';
+            formStatus.style.display = 'none';
+            
+            // Validate form
             if (!name.value.trim()) {
                 valid = false;
                 name.style.borderColor = 'red';
-            } else {
-                name.style.borderColor = '';
             }
             
             if (!email.value.trim() || !email.validity.valid) {
                 valid = false;
                 email.style.borderColor = 'red';
-            } else {
-                email.style.borderColor = '';
             }
             
             if (!message.value.trim()) {
                 valid = false;
                 message.style.borderColor = 'red';
-            } else {
-                message.style.borderColor = '';
             }
             
             if (!valid) {
-                e.preventDefault();
-                alert('Please fill out all required fields correctly.');
+                showFormStatus('Please fill out all required fields correctly.', 'error');
+                return;
             }
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Use FormSubmit with AJAX to avoid redirect
+            const formData = new FormData();
+            formData.append('name', name.value);
+            formData.append('email', email.value);
+            formData.append('message', message.value);
+            formData.append('_subject', 'New contact from AfrixaAI Website');
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            
+            fetch('https://formsubmit.co/ajax/afrixaai@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showFormStatus('Thank you for your message! We will get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                showFormStatus('Sorry, there was an error sending your message. Please try again later or email us directly at afrixaai@gmail.com.', 'error');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
+    
+    function showFormStatus(message, type) {
+        formStatus.textContent = message;
+        formStatus.style.display = 'block';
+        
+        if (type === 'success') {
+            formStatus.style.backgroundColor = 'rgba(46, 204, 113, 0.2)';
+            formStatus.style.color = '#2ecc71';
+            formStatus.style.border = '1px solid #2ecc71';
+        } else {
+            formStatus.style.backgroundColor = 'rgba(231, 76, 60, 0.2)';
+            formStatus.style.color = '#e74c3c';
+            formStatus.style.border = '1px solid #e74c3c';
+        }
+        
+        // Scroll to status message
+        formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    // Initialize currency prices
+    updatePrices('NGN');
 });
+
+// Currency conversion function
+function updatePrices(currency) {
+    const currencySymbols = {
+        'NGN': '₦',
+        'USD': '$',
+        'EUR': '€',
+        'GHS': '₵',
+        'KES': 'KSh',
+        'ZAR': 'R'
+    };
+    
+    const prices = document.querySelectorAll('.price');
+    prices.forEach(priceEl => {
+        const priceValue = priceEl.getAttribute(`data-${currency.toLowerCase()}`);
+        
+        if (priceValue === 'custom') {
+            priceEl.innerHTML = 'Custom<span>/month</span>';
+        } else {
+            // Format the number with commas
+            const formattedPrice = Number(priceValue).toLocaleString();
+            priceEl.innerHTML = `${currencySymbols[currency]}${formattedPrice}<span>/month</span>`;
+        }
+    });
+}
