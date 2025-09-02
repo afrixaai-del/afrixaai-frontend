@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         messageText.textContent = text;
         messageElement.appendChild(messageText);
         
-        chatMessages.appendChild(messageElement);
+        chatMessages.appendChild(messageElement); 
         
         // Auto-scroll to bottom
         chatMessages.scrollTop = chatMessages.scrollHeight;

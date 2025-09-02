@@ -76,6 +76,16 @@ section {
     background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
 }
 
+.section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Glassmorphism card style */
 .glass-card {
     background: var(--card-bg);
@@ -286,6 +296,82 @@ nav {
 .chat-message.user .message-content {
     background: linear-gradient(45deg, var(--neon-blue), var(--electric-purple));
     border-top-right-radius: 5px;
+}
+
+/* Demo Projects Section */
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.demo-card {
+    text-align: center;
+    position: relative;
+    padding: 25px;
+}
+
+.demo-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--electric-purple);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.demo-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.demo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.demo-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.demo-card p {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+}
+
+.demo-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+}
+
+.demo-notice {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid var(--neon-blue);
+}
+
+.demo-notice p {
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.demo-notice strong {
+    color: var(--neon-blue);
 }
 
 /* Pricing Section */
@@ -621,7 +707,8 @@ footer {
     }
     
     .features-grid,
-    .pricing-cards {
+    .pricing-cards,
+    .demo-grid {
         grid-template-columns: 1fr;
     }
     
