@@ -62,6 +62,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Service tabs functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and panes
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding pane
+            this.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // Service type selector functionality
+    const serviceTypeButtons = document.querySelectorAll('.service-type-btn');
+    const servicePricing = document.querySelectorAll('.service-pricing');
+    
+    serviceTypeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const serviceType = this.getAttribute('data-service');
+            
+            // Remove active class from all buttons and pricing sections
+            serviceTypeButtons.forEach(btn => btn.classList.remove('active'));
+            servicePricing.forEach(section => section.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding pricing section
+            this.classList.add('active');
+            document.getElementById(`${serviceType}-pricing`).classList.add('active');
+            
+            // Update prices for the new service type
+            const currentCurrency = document.getElementById('currency').value;
+            updatePrices(currentCurrency);
+        });
+    });
+    
     // Currency conversion functionality
     const currencySelector = document.getElementById('currency');
     if (currencySelector) {
@@ -108,11 +148,13 @@ document.addEventListener('DOMContentLoaded', function() {
             let valid = true;
             const name = document.getElementById('name');
             const email = document.getElementById('email');
+            const service = document.getElementById('service');
             const message = document.getElementById('message');
             
             // Reset previous error styles
             name.style.borderColor = '';
             email.style.borderColor = '';
+            service.style.borderColor = '';
             message.style.borderColor = '';
             formStatus.style.display = 'none';
             
@@ -125,6 +167,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!email.value.trim() || !email.validity.valid) {
                 valid = false;
                 email.style.borderColor = 'red';
+            }
+            
+            if (!service.value) {
+                valid = false;
+                service.style.borderColor = 'red';
             }
             
             if (!message.value.trim()) {
@@ -147,8 +194,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData();
             formData.append('name', name.value);
             formData.append('email', email.value);
+            formData.append('company', document.getElementById('company').value);
+            formData.append('service', service.value);
             formData.append('message', message.value);
-            formData.append('_subject', 'New contact from AfrixaAI Website');
+            formData.append('_subject', 'New Professional Inquiry - AfrixaTech Website');
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             
@@ -158,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    showFormStatus('Thank you for your message! We will get back to you soon.', 'success');
+                    showFormStatus('Thank you for your inquiry! Our team will contact you within 24 hours to discuss your project.', 'success');
                     contactForm.reset();
                 } else {
                     throw new Error('Submission failed');
@@ -198,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updatePrices('NGN');
 });
 
-// Currency conversion function - Updated for Flutterwave currencies
+// Currency conversion function - Updated for multiple services
 function updatePrices(currency) {
     const currencySymbols = {
         'NGN': '₦',
@@ -219,11 +268,48 @@ function updatePrices(currency) {
         const priceValue = priceEl.getAttribute(`data-${currency.toLowerCase()}`);
         
         if (priceValue === 'custom') {
-            priceEl.innerHTML = 'Custom<span>/month</span>';
+            priceEl.innerHTML = 'Custom<span>' + (priceEl.querySelector('span') ? priceEl.querySelector('span').textContent : '/month') + '</span>';
         } else {
             // Format the number with commas
             const formattedPrice = Number(priceValue).toLocaleString();
-            priceEl.innerHTML = `${currencySymbols[currency]}${formattedPrice}<span>/month</span>`;
+            priceEl.innerHTML = `${currencySymbols[currency]}${formattedPrice}<span>` + 
+                               (priceEl.querySelector('span') ? priceEl.querySelector('span').textContent : '/month') + '</span>';
         }
     });
 }
+
+// Floating elements animation
+function animateFloatingElements() {
+    const elements = document.querySelectorAll('.floating-element');
+    elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 2}s`;
+    });
+}
+
+// Initialize animations
+document.addEventListener('DOMContentLoaded', function() {
+    animateFloatingElements();
+    
+    // Add intersection observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards and sections
+    document.querySelectorAll('.glass-card, .section-title').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});

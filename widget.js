@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div id="chat-window" style="position: absolute; bottom: 70px; right: 0; width: 350px; height: 450px; background: rgba(15, 15, 35, 0.95); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); display: none; flex-direction: column;">
                 <div style="padding: 15px; background: rgba(10, 10, 26, 0.8); border-top-left-radius: 15px; border-top-right-radius: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="margin: 0; color: white;">AfrixaAI Assistant</h3>
+                    <h3 style="margin: 0; color: white;">AfrixaTech Assistant</h3>
                     <button id="close-chat" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px;">×</button>
                 </div>
                 <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column;">
                     <div style="align-self: flex-start; background: rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 15px; margin-bottom: 10px; max-width: 80%;">
-                        <p style="margin: 0;">Hello! I'm the AfrixaAI assistant. How can I help you today?</p>
+                        <p style="margin: 0;">Hello! I'm the AfrixaTech professional assistant. How can I help you today?</p>
                     </div>
                 </div>
                 <div id="typing-indicator" style="padding: 10px 15px; display: none;">

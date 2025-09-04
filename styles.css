@@ -26,6 +26,35 @@ body {
         radial-gradient(circle at 90% 60%, rgba(0, 243, 255, 0.1) 0%, transparent 20%);
 }
 
+/* Scrolling Banner */
+.scrolling-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, var(--electric-purple), var(--neon-blue));
+    color: white;
+    padding: 8px 0;
+    z-index: 2000;
+    overflow: hidden;
+    font-weight: 600;
+}
+
+.scrolling-content {
+    display: flex;
+    animation: scrollBanner 20s linear infinite;
+    white-space: nowrap;
+}
+
+.scrolling-content span {
+    padding-right: 50px;
+}
+
+@keyframes scrollBanner {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* Particle canvas background */
 #particles-js {
     position: fixed;
@@ -52,7 +81,7 @@ section {
 
 .section-title {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     text-align: center;
     background: linear-gradient(45deg, var(--neon-blue), var(--electric-purple));
     -webkit-background-clip: text;
@@ -106,7 +135,7 @@ section {
 /* Navigation */
 nav {
     position: fixed;
-    top: 0;
+    top: 30px; /* Adjusted for banner */
     width: 100%;
     z-index: 1000;
     background: rgba(10, 10, 26, 0.8);
@@ -170,7 +199,7 @@ nav {
 .hero {
     text-align: center;
     position: relative;
-    padding-top: 120px;
+    padding-top: 150px; /* Adjusted for banner and nav */
 }
 
 .hero h1 {
@@ -187,6 +216,15 @@ nav {
     color: var(--text-gray);
     max-width: 700px;
     margin: 0 auto 2rem;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .cta-button {
@@ -207,6 +245,104 @@ nav {
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(207, 0, 255, 0.4);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.cta-button.secondary:hover {
+    background: var(--neon-blue);
+    color: white;
+}
+
+/* Services Tabs */
+.services-tabs {
+    margin-top: 50px;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tab-button {
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.tab-button.active,
+.tab-button:hover {
+    background: linear-gradient(45deg, var(--neon-blue), var(--electric-purple));
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    position: relative;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.service-card {
+    text-align: center;
+    padding: 40px;
+}
+
+.service-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--neon-blue);
+}
+
+.service-card h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.service-card p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.service-features {
+    list-style: none;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.service-features li {
+    margin-bottom: 15px;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+}
+
+.service-features i {
+    color: var(--neon-blue);
+    margin-right: 15px;
+    font-size: 1.2rem;
 }
 
 /* Features Section */
@@ -298,7 +434,7 @@ nav {
     border-top-right-radius: 5px;
 }
 
-/* Demo Projects Section */
+/* Portfolio Section */
 .demo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -310,15 +446,20 @@ nav {
     text-align: center;
     position: relative;
     padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.demo-card:hover {
+    transform: translateY(-10px) scale(1.02);
 }
 
 .demo-badge {
     position: absolute;
     top: -10px;
     right: -10px;
-    background: var(--electric-purple);
+    background: linear-gradient(45deg, var(--electric-purple), var(--neon-blue));
     color: white;
-    padding: 5px 15px;
+    padding: 8px 20px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
@@ -351,6 +492,24 @@ nav {
     margin-bottom: 20px;
 }
 
+/* Demo Tech Tags */
+.demo-tech {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.demo-tech span {
+    background: rgba(0, 243, 255, 0.1);
+    color: var(--neon-blue);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 .demo-button {
     padding: 12px 30px;
     font-size: 1rem;
@@ -359,19 +518,55 @@ nav {
 .demo-notice {
     text-align: center;
     margin-top: 40px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border-left: 4px solid var(--neon-blue);
+    padding: 25px;
+    background: rgba(207, 0, 255, 0.1);
+    border-radius: 15px;
+    border-left: 4px solid var(--electric-purple);
 }
 
 .demo-notice p {
-    color: var(--text-gray);
+    color: var(--text-light);
     margin: 0;
+    font-style: italic;
 }
 
 .demo-notice strong {
-    color: var(--neon-blue);
+    color: var(--electric-purple);
+}
+
+/* Service Selector */
+.service-selector {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.service-type-btn {
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.service-type-btn.active,
+.service-type-btn:hover {
+    background: linear-gradient(45deg, var(--neon-blue), var(--electric-purple));
+    transform: translateY(-2px);
+}
+
+.service-pricing {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.service-pricing.active {
+    display: grid;
 }
 
 /* Pricing Section */
@@ -406,18 +601,25 @@ nav {
     padding: 40px 30px;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.pricing-card.popular::before {
-    content: 'MOST POPULAR';
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popular-badge {
     position: absolute;
-    top: 15px;
-    right: -35px;
-    background: var(--electric-purple);
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, var(--electric-purple), var(--neon-blue));
     color: white;
-    padding: 5px 40px;
+    padding: 5px 20px;
+    border-radius: 20px;
     font-size: 0.8rem;
-    transform: rotate(45deg);
+    font-weight: bold;
 }
 
 .price {
@@ -451,9 +653,16 @@ nav {
 .payment-info {
     text-align: center;
     margin-top: 40px;
-    padding: 15px;
+    padding: 25px;
     background: rgba(0, 243, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 15px;
+    border-left: 4px solid var(--neon-blue);
+}
+
+.payment-info p {
+    margin: 10px 0;
+    color: var(--text-light);
+    font-weight: 500;
 }
 
 .payment-info i {
@@ -531,7 +740,8 @@ nav {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -542,7 +752,8 @@ nav {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--neon-blue);
     box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
@@ -551,6 +762,14 @@ nav {
 .form-group textarea {
     min-height: 150px;
     resize: vertical;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
 }
 
 .submit-btn {
@@ -686,6 +905,39 @@ footer {
     color: var(--neon-blue);
 }
 
+/* Floating Elements */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-element {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.1;
+    animation: floatAround 15s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, -15px) rotate(5deg);
+    }
+    50% {
+        transform: translate(-15px, 10px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(10px, 15px) rotate(3deg);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .footer-content {
@@ -710,6 +962,53 @@ footer {
     .pricing-cards,
     .demo-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab-button {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+    
+    .service-selector {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .service-type-btn {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 10px;
+    }
+    
+    .scrolling-content {
+        animation: scrollBanner 15s linear infinite;
+    }
+    
+    .service-card {
+        padding: 25px;
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .service-card p {
+        font-size: 1rem;
     }
     
     /* Mobile Navigation */
@@ -790,6 +1089,27 @@ footer {
     
     .currency-selector label {
         margin-bottom: 10px;
+    }
+    
+    .scrolling-banner {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+    
+    .demo-tech {
+        justify-content: center;
+    }
+    
+    .demo-tech span {
+        font-size: 0.7rem;
+    }
+    
+    .payment-info {
+        padding: 15px;
+    }
+    
+    .payment-info p {
+        font-size: 0.9rem;
     }
 }
 
