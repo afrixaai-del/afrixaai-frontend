@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             
-            fetch('https://formsubmit.co/ajax/afrixaai@gmail.com', {
+            fetch('https://formsubmit.co/ajax/contact@afrixaai.com', {
                 method: 'POST',
                 body: formData
             })
