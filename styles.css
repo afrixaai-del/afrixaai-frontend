@@ -87,12 +87,10 @@ section {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    position: relative;
-    display: inline-block;
+    display: block; /* Changed from inline-block */
     margin-left: auto;
     margin-right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    /* Removed: position: relative, left: 50%, transform: translateX(-50%) */
 }
 
 .section-title::after {
